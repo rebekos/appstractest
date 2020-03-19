@@ -56,7 +56,7 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => false,  //from true yossef https://stackoverflow.com/questions/36950857/sqlstate42000-syntax-error-or-access-violation-1055-expression-3-of-select
+            'strict' => false,  //from true 2019-03-19 fix groupby yossef https://stackoverflow.com/questions/36950857/sqlstate42000-syntax-error-or-access-violation-1055-expression-3-of-select
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
