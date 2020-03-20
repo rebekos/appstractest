@@ -29,6 +29,8 @@ Route::middleware('throttle:100|200,1')->group(function () {
      */
     //user x
     Route::get('public/user/{userId}/trip/download',function($userId){
+
+//        dd(Trips::getUserIncomingTrips($userId));
         return response()->streamDownload(function () use ($userId) {
             echo json_encode(Trips::getUserIncomingTrips($userId));
         }, 'User_'.$userId.'_Trips.json');

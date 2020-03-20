@@ -51,6 +51,7 @@ class Trips extends Model
     public static function getUserIncomingTrips( $userId, int $limit=0){
          $builder = self::select('id','departure_date','country_name')
             ->where('user_id', $userId)
+            ->where('departure_date' , '>=', NOW())
             ->orderBy('departure_date', 'desc')
          ;
 
@@ -122,7 +123,7 @@ class Trips extends Model
             ->join('users', 'users.id', '=', 'trips.user_id')
             ->select('trips.*', 'users.name as userName')
             ->where('trips.departure_date' , '>=', NOW())
-            ->whereNull('deleted_at')
+            ->whereNull('trips.deleted_at')
             ->orderBy('trips.departure_date', 'desc')
             ->get()
         ;
